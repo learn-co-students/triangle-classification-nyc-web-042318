@@ -10,17 +10,15 @@ class Triangle
   end
 
   def kind
-    binding.pry
-    if self.num1 > 0 && self.num2 > 0 && self.num3
-      if self.num1 == self.num2 && self.num1 == self.num3
-        @kind = :equilateral
-      elsif self.num1 == self.num2 || self.num1 == self.num3 || self.num2 == self.num3
-        @kind = :isosceles
-      elsif self.num1 != self.num2 && self.num1 != self.num3 && self.num2 != self.num3
-        @kind = :scalene
-      end
-    else
+    if @num1 + @num2 <= @num3 || @num1 + @num3 <= @num2 || @num2 + @num3 <= @num1
       raise TriangleError
+    elsif @num1 <= 0 || @num2 <= 0 || @num3 <= 0
+    elsif (@num1 == @num2) && (@num2 == @num3)
+      @kind = :equilateral
+    elsif (@num1 == @num2) || (@num2 == @num3) || (@num1 == @num3)
+      @kind = :isosceles
+    elsif (@num1 !=  @num2) && (@num2 != @num3) && (@num1 != @num3)
+      @kind = :scalene
     end
   end
 
